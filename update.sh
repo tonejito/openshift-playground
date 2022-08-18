@@ -15,12 +15,19 @@
 #	4.10.25
 
 VERSION=4.10
+NEW_VERSION=4.10.25
 # stable, candidate or fast
 CHANNEL=stable-${VERSION}
+RHT_OCP4_DEV_USER=
+RHT_OCP4_DEV_PASSWORD=
+RHT_OCP4_MASTER_API=
 
 set -x
 
-oc login -u ${RHT_OCP4_DEV_USER} -p ${RHT_OCP4_DEV_PASSWORD} ${RHT_OCP4_MASTER_API}
+oc login --insecure-skip-tls-verify\
+  -u ${RHT_OCP4_DEV_USER} \
+  -p ${RHT_OCP4_DEV_PASSWORD} \
+  ${RHT_OCP4_MASTER_API}
 
 oc patch clusterversion version \
   --type="merge" \
@@ -44,5 +51,6 @@ fi
 sleep 60
 
 date
+
 # oc adm upgrade --to-latest="true"
-oc adm upgrade --to="4.10.25"
+oc adm upgrade --to="${NEW_VERSION}"
