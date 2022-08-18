@@ -58,3 +58,9 @@ then
 else
   oc adm upgrade --to="${NEW_VERSION}"
 fi
+
+sleep 1
+
+watch -n 15 -d \
+  oc get -A \
+    clusterversion,clusteroperators,operators,subscriptions,clusterserviceversions
