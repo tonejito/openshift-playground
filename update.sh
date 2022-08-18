@@ -48,7 +48,7 @@ then
   ;
 fi
 
-sleep 60
+sleep 30
 
 date
 
