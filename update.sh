@@ -22,9 +22,9 @@ RHT_OCP4_DEV_USER=admin
 RHT_OCP4_DEV_PASSWORD=redhat
 RHT_OCP4_MASTER_API=https://api.ocp4.example.com:6443
 
-set -x
+set -ex
 
-ssh lab@utility ~/wait.sh
+ssh lab@utility '~/wait.sh'
 
 sleep 2
 
