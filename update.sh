@@ -52,5 +52,9 @@ sleep 60
 
 date
 
-# oc adm upgrade --to-latest="true"
-oc adm upgrade --to="${NEW_VERSION}"
+if [ "${NEW_VERSION}" = "latest" ]
+then
+  oc adm upgrade --to-latest="true"
+else
+  oc adm upgrade --to="${NEW_VERSION}"
+fi
